@@ -1,6 +1,6 @@
 from tkinter import *
 
-# define question dictionary
+# Словарь вопросов
 question = {
     "Кто вы?": ['студент-ботаник', 'двоечник', 'везунчик', 'халявщик'],
     "Где вы живете?": ['На квартире', 'У родителей', 'В общежитие'],
@@ -11,7 +11,7 @@ question = {
     "Стоит ли подучить материал в автобусе?": ['Да','Нет'],
     "Сдавать экзамен первым?": ['Да','Нет'],
 }
-# define answer list
+# Список правильных ответов
 ans = ['студент-ботаник', 'В общежитие', 'Усиленно готовился', 'Да', 'В 23:00', 'Нет','Да','Да']
 
 current_question = 0
@@ -26,16 +26,16 @@ def start_quiz():
 def next_question():
     global current_question
     if current_question < len(question):
-        # get key or question that need to be printed
+        # Ключ
         check_ans()
         user_ans.set('None')
         c_question = list(question.keys())[current_question]
-        # clear frame to update its content
+        # Очищение рамки и обновление
         clear_frame()
-        # printing question
+        # Вопрос выводится
         Label(f1, text=f"Вопрос : {c_question}", padx=15,
               font="calibre 12 normal").pack(anchor=NW)
-        # printing options
+        # Вырианты ответов
         for option in question[c_question]:
             Radiobutton(f1, text=option, variable=user_ans,
                         value=option, padx=28).pack(anchor=NW)
@@ -65,7 +65,7 @@ def clear_frame():
 
 if __name__ == "__main__":
     root = Tk()
-    # setup basic window
+
     root.title("Имитационное моделирование жизни студента.")
     root.geometry("850x520")
     root.minsize(800, 400)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     Label(root, text="Имитационное моделирование жизни студента.",
           font="calibre 20 bold",
-          relief=SUNKEN, #background="cyan",
+          relief=SUNKEN,
           padx=10, pady=9).pack()
     Label(root, text="", font="calibre 10 bold").pack()
     start_button = Button(root,
